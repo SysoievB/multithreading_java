@@ -7,7 +7,7 @@ public class BoxOfCandies {
         this.candy = candy;
     }
 
-    public void getCandy() {
+    public synchronized void getCandy() {
         this.candy -= 1;
     }
 

@@ -16,18 +16,12 @@ public class Main {
         List<CandiesLiker> threads = new ArrayList<>(Arrays.asList(candiesLikerFirst, candiesLikerSecond, candiesLikerThird));
         for (CandiesLiker t : threads) {
             t.start();
-        }
-        for (CandiesLiker t : threads) {
             try {
                 t.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        for (CandiesLiker t : threads) {
-            System.out.println(threads.get(Randomizer.generate(0, 2)).getName() + " candies liker eating candy " + t.getSumOfAteCandies());
-
-        }
+        threads.forEach(t -> System.out.println(t.getName() + " candies liker eating candy " + t.getSumOfAteCandies()));
     }
 }
