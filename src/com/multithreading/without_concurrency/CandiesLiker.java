@@ -1,4 +1,4 @@
-package com.multithreading;
+package com.multithreading.without_concurrency;
 
 public class CandiesLiker extends Thread {
     private String name;

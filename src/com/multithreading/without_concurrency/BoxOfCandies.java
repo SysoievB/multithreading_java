@@ -1,4 +1,4 @@
-package com.multithreading;
+package com.multithreading.without_concurrency;
 
 public class BoxOfCandies {
     public volatile int candy;

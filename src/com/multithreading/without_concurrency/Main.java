@@ -1,7 +1,8 @@
-package com.multithreading;
+package com.multithreading.without_concurrency;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -22,6 +23,11 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        threads.forEach(t -> System.out.println(t.getName() + " candies liker eating candy " + t.getSumOfAteCandies()));
+
+        var indexes = new ArrayList<>(Arrays.asList(0, 1, 2));
+        Collections.shuffle(indexes);
+
+        threads.forEach(t ->
+                System.out.println(threads.get(indexes.stream().iterator().next()).getName() + " candies liker eating candy " + t.getSumOfAteCandies()));
     }
 }
