@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Main {
+public class WithoutConcurrency {
 
     public static void main(String[] args) {
         BoxOfCandies boxOfCandies = new BoxOfCandies(50);
