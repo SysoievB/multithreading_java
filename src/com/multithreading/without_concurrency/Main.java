@@ -27,7 +27,8 @@ public class Main {
         var indexes = new ArrayList<>(Arrays.asList(0, 1, 2));
         Collections.shuffle(indexes);
 
-        threads.forEach(t ->
-                System.out.println(threads.get(indexes.stream().iterator().next()).getName() + " candies liker eating candy " + t.getSumOfAteCandies()));
+        for (Integer index : indexes) {
+            System.out.println(threads.get(index).name + " candies liker eating candy " + threads.get(index).getSumOfAteCandies());
+        }
     }
 }

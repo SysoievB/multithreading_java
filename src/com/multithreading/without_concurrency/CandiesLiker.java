@@ -1,7 +1,7 @@
 package com.multithreading.without_concurrency;
 
 public class CandiesLiker extends Thread {
-    private String name;
+    public String name;
     private int sumOfAteCandies = 0;
     BoxOfCandies boxOfCandies;
 
