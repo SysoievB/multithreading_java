@@ -18,7 +18,7 @@ public class WithoutConcurrency {
 
         List<CandiesLiker> threads = new ArrayList<>(Arrays.asList(candiesLikerFirst, candiesLikerSecond, candiesLikerThird));
         Collections.shuffle(threads);
-        for (CandiesLiker t : threads) {
+        for (var t : threads) {
             t.start();
             try {
                 t.join();
