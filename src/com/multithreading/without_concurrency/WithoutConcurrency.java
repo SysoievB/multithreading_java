@@ -4,17 +4,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class WithoutConcurrency {
 
     public static void main(String[] args) {
         BoxOfCandies boxOfCandies = new BoxOfCandies(50);
+        ReentrantLock lock = new ReentrantLock();
 
-        CandiesLiker candiesLikerFirst = new CandiesLiker("Vasia", boxOfCandies);
-        CandiesLiker candiesLikerSecond = new CandiesLiker("Vitia", boxOfCandies);
-        CandiesLiker candiesLikerThird = new CandiesLiker("Valera", boxOfCandies);
+        CandiesLiker candiesLikerFirst = new CandiesLiker("Vasia", boxOfCandies, lock);
+        CandiesLiker candiesLikerSecond = new CandiesLiker("Vitia", boxOfCandies, lock);
+        CandiesLiker candiesLikerThird = new CandiesLiker("Valera", boxOfCandies, lock);
 
         List<CandiesLiker> threads = new ArrayList<>(Arrays.asList(candiesLikerFirst, candiesLikerSecond, candiesLikerThird));
+        Collections.shuffle(threads);
         for (CandiesLiker t : threads) {
             t.start();
             try {
@@ -22,13 +25,6 @@ public class WithoutConcurrency {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-
-        var indexes = new ArrayList<>(Arrays.asList(0, 1, 2));
-        Collections.shuffle(indexes);
-
-        for (Integer index : indexes) {
-            System.out.println(threads.get(index).name + " candies liker eating candy " + threads.get(index).getSumOfAteCandies());
         }
     }
 }
